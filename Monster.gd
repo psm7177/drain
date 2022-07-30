@@ -21,7 +21,7 @@ var hp = MAX_HP
 func _ready():
 	rng.randomize()
 	player = get_node("../Player")
-
+	
 func _process(delta):
 	if(is_dead()):
 		$AnimatedSprite.play("Die")
@@ -76,4 +76,7 @@ func _on_Hurtbox_take_damage(damage,force):
 	$AnimatedSprite.play("Attacked")
 	knock_back = 0.2
 	nuck_back_force = force
+	hp -= damage
+
+func _on_state_damage(damage):
 	hp -= damage
