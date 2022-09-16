@@ -3,7 +3,7 @@
 [ext_resource path="res://mystic_woods_free_v0.2/sprites/characters/player.png" type="Texture" id=1]
 [ext_resource path="res://player.gd" type="Script" id=2]
 [ext_resource path="res://Drain.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Skill.gd" type="Script" id=4]
+[ext_resource path="res://skill/Skill.tscn" type="PackedScene" id=4]
 [ext_resource path="res://skillManager.gd" type="Script" id=5]
 
 [sub_resource type="CapsuleShape2D" id=27]
@@ -148,7 +148,7 @@ switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachine" id=32]
 states/Attack/node = SubResource( 34 )
-states/Attack/position = Vector2( 563, 75 )
+states/Attack/position = Vector2( 589, 66 )
 states/Die/node = SubResource( 35 )
 states/Die/position = Vector2( 259, 167 )
 states/Drain/node = SubResource( 53 )
@@ -180,7 +180,7 @@ scale = Vector2( 2, 2 )
 texture = ExtResource( 1 )
 hframes = 6
 vframes = 5
-frame = 1
+frame = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -224,14 +224,15 @@ shape = SubResource( 27 )
 [node name="SkillManager" type="Node2D" parent="."]
 script = ExtResource( 5 )
 
-[node name="Skill" type="Node2D" parent="SkillManager"]
-script = ExtResource( 4 )
+[node name="Skill" parent="SkillManager" instance=ExtResource( 4 )]
 
 [connection signal="toggleDrain" from="." to="Drain" method="_on_Player_toggleDrain"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="animation_started" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_started"]
 [connection signal="area_entered" from="Drain" to="." method="_on_Drain_area_entered"]
+[connection signal="area_exited" from="Drain" to="." method="_on_Drain_area_exited"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
+[connection signal="enroll_skil_to_skill_manager" from="SkillManager" to="SkillManager" method="_on_SkillManager_enroll_skil_to_skill_manager"]
 
 [editable path="Drain"]

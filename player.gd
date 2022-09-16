@@ -22,7 +22,7 @@ export var DRAIN_THRESHOLD = 2
 var direction = Vector2.ZERO
 var input_attack = false
 var input_drain = false
-var input_first = false
+var input_skill = [false,false,false,false]
 
 #current properties
 var hp = MAX_HP
@@ -32,13 +32,15 @@ var is_playing_attack = false
 var is_playing_drain = false
 
 func _ready():
-	pass
+	hp = MAX_HP
+	drain_energy = MAX_DRAIN
 
 func get_input():
 	direction = Vector2.ZERO
 	input_attack = false
 	input_drain = false
-	input_first = false
+	input_skill = [false,false,false,false]
+	
 	if(Input.is_action_pressed("up")):
 		direction += Vector2.UP
 	if(Input.is_action_pressed("down")):
@@ -51,8 +53,8 @@ func get_input():
 		input_attack = true
 	if(Input.is_action_pressed("drain")):
 		input_drain = true
-	if(Input.is_action_pressed("1")):
-		input_first = true
+	for idx in input_skill.size():
+		input_skill[idx] = Input.is_action_pressed(String(idx+1))
 
 func _process(delta):
 	get_input()
@@ -73,8 +75,10 @@ func _process(delta):
 		animation_mode.travel("Walk")
 	else:
 		animation_mode.travel("Idle")
-	if(input_first):
-		self.emit_signal("active_skill")
+		
+	for idx in input_skill.size():
+		if(input_skill[idx]): 
+			self.emit_signal("active_skill",idx)
 	
 	if(!input_drain):
 		is_playing_drain = false
@@ -116,4 +120,10 @@ func _on_Drain_area_entered(area):
 	var distance:Vector2 = self.global_position - area.global_position
 	var knock_back_force = distance.normalized() * KNOCK_BACK_FORCE
 	if(area.is_in_group("Hurtbox")):
-		area.emit_signal("take_damage", ATTACK_DAMAGE,knock_back_force)
+		print("take")
+		area.emit_signal("take_drain", ATTACK_DAMAGE,knock_back_force)
+
+func _on_Drain_area_exited(area):
+	if(area.is_in_group("Hurtbox")):
+		print("release")
+		area.emit_signal("release_drain")

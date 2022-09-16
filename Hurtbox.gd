@@ -10,9 +10,6 @@ extends Area2D
 func _ready():
 	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
-signal take_damage(damage)
+signal take_damage(damage,force)
+signal take_drain(drain_damage, drain_direction)
+signal release_drain()
