@@ -22,7 +22,6 @@ position = Vector2( 324, 174 )
 position = Vector2( -324, -174 )
 offset = Vector2( 512, 300 )
 current = true
-zoom = Vector2( 5, 5 )
 
 [node name="Control" parent="Player/Camera2D" instance=ExtResource( 5 )]
 anchor_left = 1.0
