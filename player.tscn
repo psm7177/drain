@@ -180,7 +180,7 @@ scale = Vector2( 2, 2 )
 texture = ExtResource( 1 )
 hframes = 6
 vframes = 5
-frame = 4
+frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -210,7 +210,6 @@ shape = SubResource( 51 )
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
-visible = false
 position = Vector2( 2.5, 11 )
 shape = SubResource( 49 )
 disabled = true
@@ -218,7 +217,6 @@ disabled = true
 [node name="HurtBox" type="Area2D" parent="." groups=["player_hurtbox"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-visible = false
 shape = SubResource( 27 )
 
 [node name="SkillManager" type="Node2D" parent="."]
