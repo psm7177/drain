@@ -16,9 +16,9 @@ var gapArray = [Vector2.LEFT ,Vector2.UP,Vector2.RIGHT,Vector2.DOWN]
 var startNode:Room = null
 func _ready():
 	randomize()
-	var gap = 20
-	var expend_x = 512 + gap
-	var expend_y = 300 + gap
+	var gap = 200
+	var expend_x = 1024 + gap
+	var expend_y = 600 + gap
 	for idx in gapArray.size():
 		gapArray[idx].x *= expend_x
 		gapArray[idx].y *= expend_y
@@ -29,6 +29,8 @@ func _ready():
 		add_child(room)
 		
 	var node = roomArray.pop_back()
+	var home_node = node
+	var boss_node = null
 	while node != null:
 		var unlink_edges = []
 		for vertex in roomInGraph:
@@ -47,7 +49,14 @@ func _ready():
 			node.roomPos = vertex.roomPos + directionArray[direction]
 			node.position = vertex.position + gapArray[direction]
 			
+		boss_node = node
 		allocatedArray.append(node.roomPos)
 		roomInGraph.append(node)
 		node = roomArray.pop_back()
 	
+	assert(boss_node, "ERROR: Room must have a boss room.");
+	
+	home_node.is_home = true
+	boss_node.is_boss = true
+	
+	home_node.spawn_player(get_node("/root/main/Player"))
