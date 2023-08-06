@@ -9,7 +9,6 @@
 [node name="main" type="Node2D"]
 
 [node name="Room" parent="." instance=ExtResource( 3 )]
-visible = false
 
 [node name="RoomManager" type="Node2D" parent="."]
 script = ExtResource( 2 )
@@ -24,26 +23,27 @@ offset = Vector2( 256, 150 )
 current = true
 
 [node name="Control" parent="Player" instance=ExtResource( 5 )]
-anchor_left = 1.0
-anchor_top = 0.0
-anchor_right = 1.0
-anchor_bottom = 0.0
 
 [node name="Monster" parent="." instance=ExtResource( 4 )]
 position = Vector2( 184, 111 )
+scale = Vector2( 1, 1 )
 
 [node name="Monster2" parent="." instance=ExtResource( 4 )]
 position = Vector2( 415, 410 )
+scale = Vector2( 1, 1 )
 
 [node name="Monster3" parent="." instance=ExtResource( 4 )]
 position = Vector2( 646, 276 )
+scale = Vector2( 1, 1 )
 
 [node name="Monster4" parent="." instance=ExtResource( 4 )]
 position = Vector2( 152, 344 )
+scale = Vector2( 1, 1 )
 MAX_HP = 5
 
 [node name="Monster5" parent="." instance=ExtResource( 4 )]
 position = Vector2( 784, 156 )
+scale = Vector2( 1, 1 )
 
 [connection signal="enroll_skill" from="Player" to="Player/Control" method="_on_Player_enroll_skill"]
 [connection signal="setDrain" from="Player" to="Player/Control" method="_on_Player_setDrain"]

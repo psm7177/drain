@@ -1,4 +1,4 @@
-extends Sprite
+extends Node2D
 
 enum {LEFT=0,UP=1,RIGHT=2,DOWN=3}
 

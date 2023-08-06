@@ -4,7 +4,7 @@
 [ext_resource path="res://Monster.gd" type="Script" id=2]
 [ext_resource path="res://Hurtbox.gd" type="Script" id=3]
 [ext_resource path="res://loot.gd" type="Script" id=4]
-[ext_resource path="res://Drain_Skill.gd" type="Script" id=5]
+[ext_resource path="res://skill/Drain/Drain_Skill.gd" type="Script" id=5]
 [ext_resource path="res://skill/Skill.tscn" type="PackedScene" id=6]
 
 [sub_resource type="AtlasTexture" id=6]
@@ -136,10 +136,10 @@ animations = [ {
 } ]
 
 [sub_resource type="CircleShape2D" id=28]
-radius = 5.0
+radius = 15.0
 
 [sub_resource type="CapsuleShape2D" id=29]
-radius = 5.0
+radius = 15.0
 height = 0.0
 
 [node name="Monster" type="KinematicBody2D"]
@@ -152,9 +152,10 @@ ATTACK_RANGE = 40
 SPEED = 1500
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 2, 2 )
 frames = SubResource( 27 )
 animation = "Jump"
-frame = 4
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

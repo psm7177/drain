@@ -187,7 +187,7 @@ points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 1/z_index = 0
 
 [node name="TileMap" type="TileMap"]
-scale = Vector2( 2, 2 )
+scale = Vector2( 0.028, 0.028 )
 tile_set = SubResource( 1 )
 cell_size = Vector2( 16, 16 )
 show_collision = true

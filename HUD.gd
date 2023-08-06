@@ -17,7 +17,7 @@ func _ready():
 	inital_rect_size = $HP.rect_size
 	inital_rect_size_2 = $Drain.rect_size
 	
-	$Drain.texture = green_drain_texture
+	$Drain.texture = green_drain_texture	
 	
 func _process(delta):
 	pass

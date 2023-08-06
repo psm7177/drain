@@ -5,7 +5,7 @@ var rng = RandomNumberGenerator.new()
 export var skill_range = 100
 export var skill_radius = 1.0/6.0*PI
 var timer = 0
-var particle = preload("res://DrainParticle.tscn")
+var particle = preload("res://skill/Drain/DrainParticle.tscn")
 var onoff = false
 # Called when the node enters the scene tree for the first time.
 
